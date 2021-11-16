@@ -9,6 +9,7 @@ class Application:
         "homepage": HomePage.dispatch,
         "bruteforce": Bruteforce.run,
     }
+
     def __init__(self) -> None:
 
         self.route = "homepage"
@@ -17,18 +18,18 @@ class Application:
         self.store = Store()
 
     def run(self):
-         while not self.exit:
-             # On efface la console pour avoir une interface propre
-             os.system("cls")
+        while not self.exit:
+            # On efface la console pour avoir une interface propre
+            os.system("cls")
 
-             controller_method = self.routes[self.route]
-             #print(self.routes[self.route])
-             #print(self.route_params)
+            controller_method = self.routes[self.route]
+            # print(self.routes[self.route])
+            # print(self.route_params)
 
-             next_route, next_params = controller_method(self.store, self.route_params)
+            next_route, next_params = controller_method(self.store, self.route_params)
 
-             self.route = next_route
-             self.route_params = next_params
+            self.route = next_route
+            self.route_params = next_params
 
-             if next_route == "quit":
-                 self.exit = True
+            if next_route == "quit":
+                self.exit = True
