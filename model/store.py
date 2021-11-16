@@ -1,3 +1,4 @@
+import itertools
 from model.action import Action
 
 class Store:
@@ -113,11 +114,68 @@ class Store:
         for action in data:
             self.data['actions'].append(Action(action['name'],action['cpa'],action['benef']))
 
+    def search_combination(self,r):
+        combination_actions_possibles=[]
 
+        combination_actions = itertools.combinations(self.data['actions'],r)
+        for combination in combination_actions:
+
+            cpa=0
+            actions = []
+            for action in combination:
+                cpa = cpa +action.cpa
+                actions.append(action)
+
+            if cpa >= self.data['invest']:
+                pass
+            else:
+                combination_actions_possibles.append(actions)
+
+        return combination_actions_possibles
 
     def best_combi_recursive(self,actions_benefice,somme_invest):
 
-        if self.data['invest'] > somme_invest:
-            somme_invest = somme_invest +
-            best_combi_recursive(self,actions_benefice,somme_invest)
 
+
+
+
+        if self.data['invest'] > somme_invest:
+            somme_invest = somme_invest
+            #best_combi_recursive(self,actions_benefice,somme_invest)
+
+"""
+Brute force
+
+weight value
+A1 150 30
+A2 250 100
+A3 350 10
+A4
+A1A2 400 130
+A1A3 500 40
+A2A3 600 XXXXX
+A1A2A3 750 XXXXX
+
+r = len(actions)
+
+nC1 + nC2 + nC3 +..... nCr
+
+O(2^n)
+
+4C0 + 4C1 + 4C2 + 4C3 + 4C4
+1 + 4 + 6 + 4 + 1 = 15
+
+
+def brute_force(action):
+max_value = 0
+max_combination = None
+for combination in .....:
+print(combination) # [(A1, 150, 30), (A2, 250, 30)]
+if sum(a[1] for a in combination) <= 500:
+combi_value = sum(a[2] for a in combination)
+if combi_value > max_value:
+max_value = combi_value
+max_combination = combination
+else:
+print("useless")
+"""

@@ -1,11 +1,9 @@
 class Bruteforce_view:
 
     @classmethod
-    def result(cls,store):
-        print("Le meilleur investissement est : \n")
-        for action in store.data['actions']:
-            print( action.name +' avec un bénéfice apres 2 ans de ' + str(action.benef * action.benef / 100))
+    def result(cls,phrase_combi,max,cout_max):
 
+        print(phrase_combi + " ) benefice = " + str(max) + " pour un investissement de " + str(cout_max))
         print("H. Revenir au menu principal\n")
         print("Q. Quitter le programme\n")
 

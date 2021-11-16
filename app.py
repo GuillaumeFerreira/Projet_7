@@ -22,8 +22,8 @@ class Application:
              os.system("cls")
 
              controller_method = self.routes[self.route]
-             print(self.routes[self.route])
-             print(self.route_params)
+             #print(self.routes[self.route])
+             #print(self.route_params)
 
              next_route, next_params = controller_method(self.store, self.route_params)
 
