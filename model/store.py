@@ -42,15 +42,13 @@ class Store:
         combination_actions = itertools.combinations(self.data["actions"], r)
         for combination in combination_actions:
 
-            cpa = 0
-            actions = []
-            for action in combination:
-                cpa = cpa + action.cpa
-                actions.append(action)
+            cpa = sum(a.cpa for a in combination)
+            benefice = sum(a.benefice for a in combination)
 
-            if cpa >= self.data["invest"]:
-                pass
-            else:
-                combination_actions_possibles.append(actions)
+            if cpa <= self.data["invest"]:
 
-        return combination_actions_possibles
+                yield {"combination" : combination, "cpa": cpa, "benefice": benefice}
+                #combination_actions_possibles.append({"combination" : combination, "cpa": cpa, "benefice": benefice})
+
+
+        #return combination_actions_possibles
