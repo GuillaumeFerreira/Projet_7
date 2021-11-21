@@ -1,5 +1,5 @@
 # Projet 7 openclassrooms - Résolvez des problèmes en utilisant des algorithmes en Python
-##Description
+## Description
 Algorithme de type knapsack problem, version bruteforce et optimisé
 ## Fonctionnalités
 * Lancement version "bruteforce" via interface console
