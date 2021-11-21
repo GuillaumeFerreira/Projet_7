@@ -15,10 +15,6 @@ class Bruteforce:
         # On récupère toutes les combinaisons possible avec un investissement de 500 ici
         for i in range(2, len(store.data["actions"]) + 1):
 
-            #combination = store.search_combination(i)
-
-
-
             for combination_dict in store.search_combination(i):
                 if combination_dict['benefice']>max:
                     max = combination_dict['benefice']

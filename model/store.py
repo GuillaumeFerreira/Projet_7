@@ -37,8 +37,8 @@ class Store:
             )
 
     def search_combination(self, r):
-        combination_actions_possibles = []
 
+        #Retourne toutes les combinaisons possible à r elements
         combination_actions = itertools.combinations(self.data["actions"], r)
         for combination in combination_actions:
 
@@ -48,7 +48,6 @@ class Store:
             if cpa <= self.data["invest"]:
 
                 yield {"combination" : combination, "cpa": cpa, "benefice": benefice}
-                #combination_actions_possibles.append({"combination" : combination, "cpa": cpa, "benefice": benefice})
 
 
-        #return combination_actions_possibles
+
