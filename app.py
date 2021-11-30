@@ -1,6 +1,7 @@
 import os
 from controller.home_controller import HomePage
 from controller.bruteforce import Bruteforce
+from controller.optimized import Optimized
 from model.store import Store
 
 
@@ -8,6 +9,7 @@ class Application:
     routes = {
         "homepage": HomePage.dispatch,
         "bruteforce": Bruteforce.run,
+        "optimized": Optimized.run,
     }
 
     def __init__(self) -> None:
@@ -25,7 +27,7 @@ class Application:
             controller_method = self.routes[self.route]
             # print(self.routes[self.route])
             # print(self.route_params)
-
+            self.store = Store()
             next_route, next_params = controller_method(self.store, self.route_params)
 
             self.route = next_route
