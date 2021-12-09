@@ -2,6 +2,7 @@ import os
 from controller.home_controller import HomePage
 from controller.bruteforce import Bruteforce
 from controller.optimized import Optimized
+from controller.dataset import Dataset
 from model.store import Store
 
 
@@ -10,6 +11,8 @@ class Application:
         "homepage": HomePage.dispatch,
         "bruteforce": Bruteforce.run,
         "optimized": Optimized.run,
+        "dataset1": Dataset.charger_dataset1,
+        "dataset2": Dataset.charger_dataset2,
     }
 
     def __init__(self) -> None:
@@ -18,7 +21,7 @@ class Application:
         self.exit = False
         self.route_params = None
         self.store = Store()
-
+        self.store.get_action()
     def run(self):
         while not self.exit:
             # On efface la console pour avoir une interface propre
@@ -27,7 +30,7 @@ class Application:
             controller_method = self.routes[self.route]
             # print(self.routes[self.route])
             # print(self.route_params)
-            self.store = Store()
+            #self.store = Store()
             # self.store.get_action_csv()
             next_route, next_params = controller_method(self.store, self.route_params)
 

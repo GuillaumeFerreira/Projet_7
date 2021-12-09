@@ -2,7 +2,7 @@ class Optimized:
     @classmethod
     def run(cls, store, route_params):
 
-        store.get_action()
+        #store.get_action()
         poid, benef, elements = cls.sacADos_dynamique(
             store.data["invest"], store.data["actions"]
         )
