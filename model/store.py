@@ -1,4 +1,5 @@
 import itertools
+import csv
 from model.action import Action
 
 
@@ -8,7 +9,8 @@ class Store:
         self.data = {"actions": [], "invest": 500}
 
     def get_action(self):
-        data = [
+        self.get_data_set_1()
+        """"data = [
             {"name": "action-1", "cpa": 20, "benef": 5},
             {"name": "action-2", "cpa": 30, "benef": 10},
             {"name": "action-3", "cpa": 50, "benef": 15},
@@ -32,13 +34,33 @@ class Store:
         ]
 
         for action in data:
+
             self.data["actions"].append(
+
                 Action(action["name"], action["cpa"], action["benef"])
-            )
+            )"""
+
+    def get_action_csv(self, file):
+        with open(file, "r") as file:
+            next(csv.reader(file))
+            for row in csv.reader(file):
+                # traitemant des données si nécessaire puis ajout self data
+                if float(row[1]) > 0:
+                    self.data["actions"].append(
+                        Action(row[0], int(float(row[1])), int(float(row[2])))
+                    )
+
+    def get_data_set_1(self):
+        self.data["actions"] = []
+        self.get_action_csv(r"Projet_7/csv/dataset1_Python+P7.csv")
+
+    def get_data_set_2(self):
+        self.data["actions"] = []
+        self.get_action_csv(r"Projet_7/csv/dataset2_Python+P7.csv")
 
     def search_combination(self, r):
 
-        #Retourne toutes les combinaisons possible à r elements
+        # Retourne toutes les combinaisons possible à r elements
         combination_actions = itertools.combinations(self.data["actions"], r)
         for combination in combination_actions:
 
@@ -47,7 +69,4 @@ class Store:
 
             if cpa <= self.data["invest"]:
 
-                yield {"combination" : combination, "cpa": cpa, "benefice": benefice}
-
-
-
+                yield {"combination": combination, "cpa": cpa, "benefice": benefice}
