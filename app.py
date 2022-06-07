@@ -30,10 +30,6 @@ class Application:
             os.system("cls")
 
             controller_method = self.routes[self.route]
-            # print(self.routes[self.route])
-            # print(self.route_params)
-            # self.store = Store()
-            # self.store.get_action_csv()
             next_route, next_params = controller_method(
                 self.store, self.route_params
             )
