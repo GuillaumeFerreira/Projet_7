@@ -43,4 +43,7 @@ class Optimized:
             n -= 1
         poid = capacite - w
 
-        return Optimized_view.result(poid/100, benef/100, elements_selection), None
+        return (
+            Optimized_view.result(poid / 100, benef / 100, elements_selection),
+            None,
+        )

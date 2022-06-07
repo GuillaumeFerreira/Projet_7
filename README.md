@@ -21,7 +21,7 @@ python projet_7
 Pour toutes contibutions, veuillez utiliser **flake8** et **black**
 #### Exécuter black
 ```python
-black projet_7
+black --line-length 79 projet_7 
 ```
 #### Exécuter flake8
 ```python

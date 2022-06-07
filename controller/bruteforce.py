@@ -1,6 +1,7 @@
 from view.bruteforce_view import Bruteforce_view
 import itertools
 
+
 class Bruteforce:
     @classmethod
     def search_combination(cls, r, store):
@@ -22,17 +23,17 @@ class Bruteforce:
 
     @classmethod
     def run(cls, store, route_params):
-
+        # complexité temporelle --> + n
+        # complexité spatiale -->
 
         max = 0
         combi_max = ""
         cout_max = 0
 
-        # On récupère toutes les combinaisons possible avec
-        # un investissement de 500 ici
+        # On récupère toutes les combinaisons possible
         for i in range(2, len(store.data["actions"]) + 1):
 
-            for combination_dict in cls.search_combination(i,store):
+            for combination_dict in cls.search_combination(i, store):
                 if combination_dict["benefice"] > max:
                     max = combination_dict["benefice"]
                     combi_max = combination_dict["combination"]
@@ -49,5 +50,3 @@ class Bruteforce:
             next = "homepage"
 
         return next, None
-
-

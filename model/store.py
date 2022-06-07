@@ -1,4 +1,3 @@
-
 import csv
 
 from model.action import Action
@@ -7,10 +6,10 @@ from model.action import Action
 class Store:
     def __init__(self):
 
-        self.data = {"actions": [], "invest": 500 }
+        self.data = {"actions": [], "invest": 500}
 
     def get_action(self):
-        #self.get_data_set_1()
+        # self.get_data_set_1()
         self.data["actions"] = []
         data = [
             {"name": "action-1", "cpa": 20, "benef": 5},
@@ -38,7 +37,6 @@ class Store:
         for action in data:
 
             self.data["actions"].append(
-
                 Action(action["name"], action["cpa"], action["benef"])
             )
         self.data["actions"] = sorted(
@@ -46,6 +44,7 @@ class Store:
             key=lambda action: action.benefice,
             reverse=True,
         )
+
     def get_action_csv(self, file):
         with open(file, "r") as file:
             next(csv.reader(file))
@@ -68,5 +67,3 @@ class Store:
     def get_data_set_2(self):
         self.data["actions"] = []
         self.get_action_csv(r"Projet_7/csv/dataset2_Python+P7.csv")
-
-
