@@ -1,3 +1,4 @@
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 # Projet 7 openclassrooms - Résolvez des problèmes en utilisant des algorithmes en Python
 ## Description
 Algorithme de type knapsack problem, version bruteforce et optimisé
