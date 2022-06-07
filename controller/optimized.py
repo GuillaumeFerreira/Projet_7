@@ -6,7 +6,7 @@ class Optimized:
     # Solution optimale - programmation dynamique
     @classmethod
     def sacADos_dynamique(cls, store, route_params):
-        # objectif complexité linéaire O(n) ou pseudo linéaire O(n log n )
+        # objectif complexité linéaire O(n) ou pseudo linéaire O(n log n ) ou logarithmique O(log n )
 
         capacite = store.data["invest"] * 100
         elements = store.data["actions"]
