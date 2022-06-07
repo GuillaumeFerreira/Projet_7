@@ -1,4 +1,4 @@
-import itertools
+
 import csv
 
 from model.action import Action
@@ -7,7 +7,7 @@ from model.action import Action
 class Store:
     def __init__(self):
 
-        self.data = {"actions": [], "invest": 500 * 100}
+        self.data = {"actions": [], "invest": 500 }
 
     def get_action(self):
         #self.get_data_set_1()
@@ -41,7 +41,11 @@ class Store:
 
                 Action(action["name"], action["cpa"], action["benef"])
             )
-
+        self.data["actions"] = sorted(
+            self.data["actions"],
+            key=lambda action: action.benefice,
+            reverse=True,
+        )
     def get_action_csv(self, file):
         with open(file, "r") as file:
             next(csv.reader(file))
@@ -65,19 +69,4 @@ class Store:
         self.data["actions"] = []
         self.get_action_csv(r"Projet_7/csv/dataset2_Python+P7.csv")
 
-    def search_combination(self, r):
 
-        # Retourne toutes les combinaisons possible à r elements
-        combination_actions = itertools.combinations(self.data["actions"], r)
-        for combination in combination_actions:
-
-            cpa = sum(a.cpa for a in combination)
-            benefice = sum(a.benefice for a in combination)
-
-            if cpa <= self.data["invest"]:
-
-                yield {
-                    "combination": combination,
-                    "cpa": cpa,
-                    "benefice": benefice,
-                }

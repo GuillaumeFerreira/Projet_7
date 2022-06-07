@@ -4,9 +4,9 @@ class Optimized_view:
         print(
             str(elements)
             + " benefice = "
-            + str(benef / 100)
+            + str(benef )
             + " pour un investissement de "
-            + str(poid / 100)
+            + str(poid )
         )
 
         print("H. Revenir au menu principal\n")

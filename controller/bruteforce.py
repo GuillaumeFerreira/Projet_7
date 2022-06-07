@@ -1,10 +1,28 @@
 from view.bruteforce_view import Bruteforce_view
-
+import itertools
 
 class Bruteforce:
     @classmethod
+    def search_combination(cls, r, store):
+
+        # Retourne toutes les combinaisons possible à r elements
+        combination_actions = itertools.combinations(store.data["actions"], r)
+        for combination in combination_actions:
+
+            cpa = sum(a.cpa for a in combination)
+            benefice = sum(a.benefice for a in combination)
+
+            if cpa <= store.data["invest"]:
+
+                yield {
+                    "combination": combination,
+                    "cpa": cpa,
+                    "benefice": benefice,
+                }
+
+    @classmethod
     def run(cls, store, route_params):
-        store.get_action()
+
 
         max = 0
         combi_max = ""
@@ -14,7 +32,7 @@ class Bruteforce:
         # un investissement de 500 ici
         for i in range(2, len(store.data["actions"]) + 1):
 
-            for combination_dict in store.search_combination(i):
+            for combination_dict in cls.search_combination(i,store):
                 if combination_dict["benefice"] > max:
                     max = combination_dict["benefice"]
                     combi_max = combination_dict["combination"]
@@ -31,3 +49,5 @@ class Bruteforce:
             next = "homepage"
 
         return next, None
+
+

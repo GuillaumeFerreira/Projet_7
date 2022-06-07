@@ -6,7 +6,8 @@ class Optimized:
     # Solution optimale - programmation dynamique
     @classmethod
     def sacADos_dynamique(cls, store, route_params):
-        capacite = store.data["invest"]
+
+        capacite = store.data["invest"] * 100
         elements = store.data["actions"]
         # creation matrice vide
         matrice = [
@@ -42,6 +43,4 @@ class Optimized:
             n -= 1
         poid = capacite - w
 
-        next = Optimized_view.result(poid, benef, elements_selection)
-
-        return next, None
+        return Optimized_view.result(poid/100, benef/100, elements_selection), None

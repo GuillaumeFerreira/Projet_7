@@ -6,6 +6,7 @@ class HomeView:
         print("2. Executer le script 'optimized'\n")
         print("3. Charger dataset 1 \n")
         print("4. Charger dataset 2\n")
+        print("5. Charger jeu de donnée\n")
         print("Q. Quitter le programme\n")
 
         return input("Votre choix: \n")

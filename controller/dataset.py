@@ -14,3 +14,10 @@ class Dataset:
         Dataset_view.result()
 
         return "homepage", None
+
+    @classmethod
+    def charger_dataset(cls, store, route_params):
+        store.get_action()
+        Dataset_view.result()
+
+        return "homepage", None

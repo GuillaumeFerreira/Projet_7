@@ -13,6 +13,7 @@ class Application:
         "optimized": Optimized.sacADos_dynamique,
         "dataset1": Dataset.charger_dataset1,
         "dataset2": Dataset.charger_dataset2,
+        "dataset": Dataset.charger_dataset,
     }
 
     def __init__(self) -> None:

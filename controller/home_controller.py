@@ -18,4 +18,6 @@ class HomePage:
             next = "dataset1"
         elif choice == "4":
             next = "dataset2"
+        elif choice == "5":
+            next = "dataset"
         return next, store
