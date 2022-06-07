@@ -10,7 +10,8 @@ class Bruteforce:
         combi_max = ""
         cout_max = 0
 
-        # On récupère toutes les combinaisons possible avec un investissement de 500 ici
+        # On récupère toutes les combinaisons possible avec
+        # un investissement de 500 ici
         for i in range(2, len(store.data["actions"]) + 1):
 
             for combination_dict in store.search_combination(i):

@@ -33,13 +33,17 @@ class Optimized:
     @classmethod
     def sacADos_dynamique(cls, capacite, elements):
         # creation matrice vide
-        matrice = [[0 for x in range(capacite + 1)] for x in range(len(elements) + 1)]
+        matrice = [
+            [0 for x in range(capacite + 1)] for x in range(len(elements) + 1)
+        ]
 
         # rempli la matrice
         for i in range(1, len(elements) + 1):
             for w in range(1, capacite + 1):
                 if elements[i - 1].cpa <= w:
-                    matrice[i][w] = max(elements[i - 1].benefice, matrice[i - 1][w])
+                    matrice[i][w] = max(
+                        elements[i - 1].benefice, matrice[i - 1][w]
+                    )
                 else:
                     matrice[i][w] = matrice[i - 1][w]
 

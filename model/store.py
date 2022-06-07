@@ -51,7 +51,9 @@ class Store:
                         Action(row[0], int(float(row[1]) * 100), float(row[2]))
                     )
         self.data["actions"] = sorted(
-            self.data["actions"], key=lambda action: action.benefice, reverse=True
+            self.data["actions"],
+            key=lambda action: action.benefice,
+            reverse=True,
         )
 
     def get_data_set_1(self):
@@ -73,4 +75,8 @@ class Store:
 
             if cpa <= self.data["invest"]:
 
-                yield {"combination": combination, "cpa": cpa, "benefice": benefice}
+                yield {
+                    "combination": combination,
+                    "cpa": cpa,
+                    "benefice": benefice,
+                }
