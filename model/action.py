@@ -8,3 +8,7 @@ class Action:
     @property
     def benefice(self):
         return self.cpa * self.benef / 100
+
+    @property
+    def ratio(self):
+        return self.benef / self.cpa
