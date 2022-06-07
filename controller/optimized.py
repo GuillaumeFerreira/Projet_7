@@ -8,7 +8,7 @@ class Optimized:
         poid, benef, elements = cls.sacADos_dynamique(
             store.data["invest"], store.data["actions"]
         )
-        next = Optimized_view.result(cls, poid, benef, elements)
+        next = Optimized_view.result(poid, benef, elements)
 
         return next, None
 
