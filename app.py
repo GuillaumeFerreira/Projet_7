@@ -10,7 +10,7 @@ class Application:
     routes = {
         "homepage": HomePage.dispatch,
         "bruteforce": Bruteforce.run,
-        "optimized": Optimized.run,
+        "optimized": Optimized.sacADos_dynamique,
         "dataset1": Dataset.charger_dataset1,
         "dataset2": Dataset.charger_dataset2,
     }
