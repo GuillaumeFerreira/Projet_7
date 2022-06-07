@@ -1,31 +1,14 @@
 import xlsxwriter
-
+from view.optimized_view import Optimized_view
 
 class Optimized:
     @classmethod
     def run(cls, store, route_params):
 
-        # store.get_action()
-        # import pdb;pdb.set_trace()
         poid, benef, elements = cls.sacADos_dynamique(
             store.data["invest"], store.data["actions"]
         )
-        print(
-            str(elements)
-            + " benefice = "
-            + str(benef / 100)
-            + " pour un investissement de "
-            + str(poid / 100)
-        )
-
-        print("H. Revenir au menu principal\n")
-        print("Q. Quitter le programme\n")
-
-        choice = input("Votre choix: \n")
-        if choice.lower() == "q":
-            next = "quit"
-        elif choice.lower() == "h":
-            next = "homepage"
+        next = Optimized_view.result(cls, poid, benef, elements)
 
         return next, None
 
@@ -68,16 +51,7 @@ class Optimized:
             n -= 1
         poid = capacite - w
 
-        # + matrice[i - 1][w - elements[i - 1].cpa]
-        # cls.write_matrice( matrice, capacite, elements)
+
         return poid, benef, elements_selection
 
-    @classmethod
-    def write_matrice(cls, matrice, capacite, elements):
-        workbook = xlsxwriter.Workbook("hello.xlsx")
-        worksheet = workbook.add_worksheet()
-        for i in range(1, len(elements) + 1):
-            for w in range(1, capacite + 1):
-                worksheet.write(i, w, str(matrice[i][w]))
 
-        workbook.close()
