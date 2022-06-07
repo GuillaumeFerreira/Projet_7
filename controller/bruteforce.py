@@ -23,7 +23,7 @@ class Bruteforce:
 
     @classmethod
     def run(cls, store, route_params):
-        # complexité temporelle --> + n
+        # complexité temporelle --> 2^n
         # complexité spatiale -->
 
         max = 0
