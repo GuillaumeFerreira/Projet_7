@@ -14,15 +14,15 @@ pip install -r requirements.txt
 ```
 #### Lancer le script
 ```python
-python projet-7
+python projet_7
 ```
 ## Contribuer
 Pour toutes contibutions, veuillez utiliser **flake8** et **black**
 #### Exécuter black
 ```python
-black tournament
+black projet_7
 ```
 #### Exécuter flake8
 ```python
-flake8 tournament
+flake8 projet_7
 ```

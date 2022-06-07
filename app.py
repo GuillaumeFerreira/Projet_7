@@ -22,6 +22,7 @@ class Application:
         self.route_params = None
         self.store = Store()
         self.store.get_action()
+
     def run(self):
         while not self.exit:
             # On efface la console pour avoir une interface propre
@@ -30,7 +31,7 @@ class Application:
             controller_method = self.routes[self.route]
             # print(self.routes[self.route])
             # print(self.route_params)
-            #self.store = Store()
+            # self.store = Store()
             # self.store.get_action_csv()
             next_route, next_params = controller_method(self.store, self.route_params)
 

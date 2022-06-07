@@ -4,8 +4,7 @@ from view.bruteforce_view import Bruteforce_view
 class Bruteforce:
     @classmethod
     def run(cls, store, route_params):
-        #store.get_action()
-
+        # store.get_action()
 
         max = 0
         combi_max = ""
