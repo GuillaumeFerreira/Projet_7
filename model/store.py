@@ -10,8 +10,9 @@ class Store:
         self.data = {"actions": [], "invest": 500 * 100}
 
     def get_action(self):
-        self.get_data_set_1()
-        """"data = [
+        #self.get_data_set_1()
+        self.data["actions"] = []
+        data = [
             {"name": "action-1", "cpa": 20, "benef": 5},
             {"name": "action-2", "cpa": 30, "benef": 10},
             {"name": "action-3", "cpa": 50, "benef": 15},
@@ -39,7 +40,7 @@ class Store:
             self.data["actions"].append(
 
                 Action(action["name"], action["cpa"], action["benef"])
-            )"""
+            )
 
     def get_action_csv(self, file):
         with open(file, "r") as file:
