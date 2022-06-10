@@ -23,8 +23,16 @@ class Optimized:
             profit.append(share.benefice)
 
         # Find optimal profit
+        # Construction de la matrice vide à n éléments
+        """
+        |0 0 0 ... n|
+        |. . . ... n|
+        |. . . ... n|
+        |n n n ... n|
+        """
         ks = [[0 for x in range(max_inv + 1)] for x in range(shares_total + 1)]
 
+        #On rempli la matrice
         for i in tqdm(range(1, shares_total + 1)):
 
             for w in range(1, max_inv + 1):
