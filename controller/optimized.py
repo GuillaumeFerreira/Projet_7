@@ -32,13 +32,21 @@ class Optimized:
         """
         ks = [[0 for x in range(max_inv + 1)] for x in range(shares_total + 1)]
 
-        #On rempli la matrice , on va regarder pour chaque cout la valeur la plus rentable
-        #Exemple avec 4 valeurs [ [poid = 1 ,val = 1], [poid = 3 ,val = 4] , [poid = 4 ,val = 5] , [poid = 5 ,val = 7] ] --> 'shares_total' et un investissement de 7--> 'max_inv'
-        #Si le le cout est suffisant on fait max( valeur de l element regardé + valeur de la case de la ligne d avant et pour la colonne on se place en fonction du cout utilisé , ou on prend la meme colonne de la ligne precedente)
-        #cost[1, 3, 4, 5] , profit[1, 4, 5, 7]
-        #Exemple pour ks[i=4][w=5]= max( profit[4-1] + ks[4-1][5-cost[4-1]],ks[4-1][5]=max( 7 + ks[3][0],ks[3][5])=max(7+0,7)=7
-        #Exemple pour ks[i=2][w=7]= max( profit[2-1] + ks[2-1][7-cost[2-1]],ks[2-1][7]=max( 4 + ks[1][4],ks[1][7])=max(4+5,5)=9
+        # On rempli la matrice , on va regarder pour chaque cout la valeur la plus rentable
         """ 
+        4 valeurs [ [poid = 1 ,val = 1], [poid = 3 ,val = 4] , [poid = 4 ,val = 5] , [poid = 5 ,val = 7] ]
+         --> 'shares_total' et un investissement de 7--> 'max_inv'
+         
+        Si le le cout est suffisant on fait max( valeur de l element regardé + valeur de la case de la
+        ligne d avant et pour la colonne on se place en fonction du cout utilisé ,
+        ou on prend la meme colonne de la ligne precedente) cost[1, 3, 4, 5] , profit[1, 4, 5, 7]
+        
+        ks[i=4][w=5]= max( profit[4-1] + ks[4-1][5-cost[4-1]],ks[4-1][5]
+        =max( 7 + ks[3][0],ks[3][5])=max(7+0,7)=7
+        
+        pour ks[i=2][w=7]= max( profit[2-1] + ks[2-1][7-cost[2-1]],ks[2-1][7]
+        =max( 4 + ks[1][4],ks[1][7])=max(4+5,5)=9
+        
            0 1 2 3 4 5 6 7      0 1 2 3 4 5 6 7       
         1 |0 0 0 0 0 0 0 0|  1 |0 1 1 1 1 1 1 1 | 
         3 |0 0 0 0 0 0 0 0|  3 |0 1 1 4 5 5 5 5 |
