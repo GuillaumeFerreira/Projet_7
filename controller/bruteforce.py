@@ -6,8 +6,8 @@ from tqdm import tqdm
 class Bruteforce:
     @classmethod
     def run(cls, store, route_params):
-        # complexité temporelle --> 2^n + n --> O(2^n)
-        # complexité spatiale --> 7 + n -->  O(n) ?
+        # complexité temporelle --> O(3^n)
+        # complexité spatiale --> O(n)
 
         maximun = 0
         cout_max = 0
