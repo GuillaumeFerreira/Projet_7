@@ -1,49 +1,52 @@
 from view.bruteforce_view import Bruteforce_view
 import itertools
+from tqdm import tqdm
 
 
 class Bruteforce:
-    @classmethod
-    def search_combination(cls, r, store):
-
-        # Retourne toutes les combinaisons possible à r elements
-        combination_actions = itertools.combinations(store.data["actions"], r)
-        for combination in combination_actions:
-            print(combination)
-            cpa = sum(a.cpa for a in combination)
-            benefice = sum(a.benefice for a in combination)
-
-            if cpa <= store.data["invest"]:
-
-                yield {
-                    "combination": combination,
-                    "cpa": cpa,
-                    "benefice": benefice,
-                }
-
     @classmethod
     def run(cls, store, route_params):
         # complexité temporelle --> 2^n + n --> O(2^n)
         # complexité spatiale --> 7 + n -->  O(n) ?
 
-        max = 0
-        combi_max = ""
+        maximun = 0
         cout_max = 0
+        selection_actions = []
+        phrase_combi = ""
 
-        # On récupère toutes les combinaisons possible
-        for i in range(2, len(store.data["actions"]) + 1):
-            print(i)
-            for combination_dict in cls.search_combination(i, store):
-                if combination_dict["benefice"] > max:
-                    max = combination_dict["benefice"]
-                    combi_max = combination_dict["combination"]
-                    cout_max = combination_dict["cpa"]
+        # Début logique bruteforce
+        # Utilisation tqdm pour chargement console
+        for i in tqdm(range(len(store.data["actions"]), 0, -1)):
+            # Retourne toutes les combinaisons possible à i elements
+            combination_actions = itertools.combinations(
+                store.data["actions"], i
+            )
 
-        phrase_combi = "( "
-        for action in combi_max:
+            for combination in combination_actions:
+
+                sum_cpa = 0
+                sum_benef = 0
+                valeur_dep = False
+                for a in combination:
+                    sum_cpa = a.cpa + sum_cpa
+                    sum_benef = a.benefice + sum_benef
+                    if sum_cpa > store.data["invest"]:
+                        valeur_dep = True
+                        break
+
+                if valeur_dep is False and sum_benef > maximun:
+                    maximun = sum_benef
+                    selection_actions = combination
+                    break
+        # Fin logique bruteforce
+
+        # Logique pour affichage résultat
+        for action in selection_actions:
             phrase_combi = phrase_combi + action.name + ", "
+            cout_max = action.cpa + cout_max
 
-        choice = Bruteforce_view.result(phrase_combi, max, cout_max)
+        # Affichage résultat
+        choice = Bruteforce_view.result(phrase_combi, maximun, cout_max)
         if choice.lower() == "q":
             next = "quit"
         elif choice.lower() == "h":

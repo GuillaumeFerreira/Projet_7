@@ -11,4 +11,4 @@ class Action:
 
     @property
     def ratio(self):
-        return self.benef / self.cpa
+        return self.benefice / self.cpa

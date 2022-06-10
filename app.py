@@ -22,7 +22,7 @@ class Application:
         self.exit = False
         self.route_params = None
         self.store = Store()
-        self.store.get_action()
+        # self.store.get_action()
 
     def run(self):
         while not self.exit:

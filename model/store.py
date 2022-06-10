@@ -9,7 +9,6 @@ class Store:
         self.data = {"actions": [], "invest": 500}
 
     def get_action(self):
-        # self.get_data_set_1()
         self.data["actions"] = []
         data = [
             {"name": "action-1", "cpa": 20, "benef": 5},
@@ -41,7 +40,7 @@ class Store:
             )
         self.data["actions"] = sorted(
             self.data["actions"],
-            key=lambda action: action.benefice,
+            key=lambda action: action.ratio,
             reverse=True,
         )
 
@@ -52,11 +51,11 @@ class Store:
                 # traitemant des données si nécessaire puis ajout self data
                 if float(row[1]) > 0:
                     self.data["actions"].append(
-                        Action(row[0], int(float(row[1]) * 100), float(row[2]))
+                        Action(row[0], float(row[1]), float(row[2]))
                     )
         self.data["actions"] = sorted(
             self.data["actions"],
-            key=lambda action: action.benefice,
+            key=lambda action: action.ratio,
             reverse=True,
         )
 
