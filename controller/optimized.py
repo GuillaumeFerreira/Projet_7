@@ -32,7 +32,16 @@ class Optimized:
         """
         ks = [[0 for x in range(max_inv + 1)] for x in range(shares_total + 1)]
 
-        #On rempli la matrice
+        #On rempli la matrice , on va regarder pour chaque cout la valeur la plus rentable
+        #Exemple avec 4 valeurs [ [poid = 1 ,val = 1], [poid = 3 ,val = 4] , [poid = 4 ,val = 5] , [poid = 5 ,val = 7] ] --> 'shares_total' et un investissement de 7--> 'max_inv'
+        """ 
+           0 1 2 3 4 5 6 7      0 1 2 3 4 5 6 7       
+        1 |0 0 0 0 0 0 0 0|  1 |0 1 1 1 1 1 1 1 | 
+        3 |0 0 0 0 0 0 0 0|  3 |0 1 1 4 5 5 5 5 |
+        4 |0 0 0 0 0 0 0 0|  4 |0 1 1 4 5 6 6 9 |
+        5 |0 0 0 0 0 0 0 0|  5 |0 1 1 4 5 7 8 9 |
+        """
+
         for i in tqdm(range(1, shares_total + 1)):
 
             for w in range(1, max_inv + 1):
