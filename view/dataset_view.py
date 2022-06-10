@@ -4,4 +4,4 @@ class Dataset_view:
 
         print("Chargement des données effectuées")
 
-        return input("Appuyer sur une entrée pour continuer: \n")
+        return input("Appuyer sur entrée pour continuer: \n")
