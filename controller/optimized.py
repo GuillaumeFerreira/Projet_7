@@ -23,12 +23,12 @@ class Optimized:
             profit.append(share.benefice)
 
         # Find optimal profit
-        # Construction de la matrice vide à n éléments
+        # Construction de la matrice vide à n éléments et m max_inv
         """
-        |0 0 0 ... n|
-        |. . . ... n|
-        |. . . ... n|
-        |n n n ... n|
+        |0 0 0 ... m|
+        |. . . ... m|
+        |. . . ... m|
+        |n n n ... m|
         """
         ks = [[0 for x in range(max_inv + 1)] for x in range(shares_total + 1)]
 
