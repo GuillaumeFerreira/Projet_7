@@ -3,7 +3,8 @@ class Bruteforce_view:
     def result(cls, phrase_combi, max, cout_max):
 
         print(
-            phrase_combi
+            "\n( "
+            + phrase_combi
             + " ) benefice = "
             + str(max)
             + " pour un investissement de "
