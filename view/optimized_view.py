@@ -2,7 +2,7 @@ class Optimized_view:
     @classmethod
     def result(cls, poid, benef, elements):
         for el in elements:
-            print(el.name + " " + str(el.cpa))
+            print(el.name)
         print(
             " benefice = "
             + str(benef)
